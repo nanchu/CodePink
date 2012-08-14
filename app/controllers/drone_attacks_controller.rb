@@ -7,7 +7,7 @@ class DroneAttacksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @drone_attacks }
+      format.json { render json: @drone_attacks }
     end
   end
 
@@ -18,7 +18,7 @@ class DroneAttacksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @drone_attack }
+      format.json { render json: @drone_attack }
     end
   end
 
@@ -29,7 +29,7 @@ class DroneAttacksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render :json => @drone_attack }
+      format.json { render json: @drone_attack }
     end
   end
 
@@ -45,11 +45,11 @@ class DroneAttacksController < ApplicationController
 
     respond_to do |format|
       if @drone_attack.save
-        format.html { redirect_to @drone_attack, :notice => 'Drone attack was successfully created.' }
-        format.json { render :json => @drone_attack, :status => :created, :location => @drone_attack }
+        format.html { redirect_to @drone_attack, notice: 'Drone attack was successfully created.' }
+        format.json { render json: @drone_attack, status: :created, location: @drone_attack }
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @drone_attack.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.json { render json: @drone_attack.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,11 +61,11 @@ class DroneAttacksController < ApplicationController
 
     respond_to do |format|
       if @drone_attack.update_attributes(params[:drone_attack])
-        format.html { redirect_to @drone_attack, :notice => 'Drone attack was successfully updated.' }
+        format.html { redirect_to @drone_attack, notice: 'Drone attack was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @drone_attack.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.json { render json: @drone_attack.errors, status: :unprocessable_entity }
       end
     end
   end

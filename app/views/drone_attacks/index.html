@@ -7,10 +7,17 @@
         html { height: 100% }
         body { height: 100%; margin: 10; padding: 1 }
         #map_canvas { height: 100% }
-        div#map {margin: 0 auto 0 auto;}
+        div#map {
+            margin: 0 auto 0 auto;
+            text-align: center;
+            width: 1000px;
+            height: 600px;
+            padding: 5px;
+        }
     </style>
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
 
     <script type="text/javascript">
         var map;
@@ -34,7 +41,7 @@
 <body onload="initialize()">
 
 <h1>Drone Attacks in Pakistan</h1>
-<div id="map" />
+<div id="map"/>
 <div id="map_canvas2" />
 
 <div id="infobox">

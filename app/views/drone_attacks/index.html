@@ -9,25 +9,30 @@
         #map_canvas { height: 100% }
         div#map {margin: 0 auto 0 auto;}
     </style>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
     <script type="text/javascript">
-        var map;
-        var infowindow;
-        var geocoder;
-        all_addresses = ['Pakistan' ];
-        address_info = ['address 1'];
-
-        function initialize() {
-            geocoder = new google.maps.Geocoder();
-            var pakistan = new google.maps.LatLng(32.0162, 71.9626);
-            map = new google.maps.Map(document.getElementById('map'), {
-                mapTypeId: google.maps.MapTypeId.TERRAIN,
-                center: pakistan,
-                zoom: 5
-            });
-        }
+        document.onload(function(){
+            alert("Test");
+        });
     </script>
+    <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+
+    <!--<script type="text/javascript">-->
+        <!--var map;-->
+        <!--var infowindow;-->
+        <!--var geocoder;-->
+        <!--all_addresses = ['Pakistan' ];-->
+        <!--address_info = ['address 1'];-->
+
+        <!--function initialize() {-->
+            <!--geocoder = new google.maps.Geocoder();-->
+            <!--var pakistan = new google.maps.LatLng(32.0162, 71.9626);-->
+            <!--map = new google.maps.Map(document.getElementById('map'), {-->
+                <!--mapTypeId: google.maps.MapTypeId.TERRAIN,-->
+                <!--center: pakistan,-->
+                <!--zoom: 5-->
+            <!--});-->
+        <!--}-->
+    <!--</script>-->
 </head>
 
 <body onload="initialize()">

@@ -1,5 +1,5 @@
 Codepink::Application.routes.draw do
-  resources :drones
+  resources :drone_attacks
 
-  root :to => "drones#index"
+  root :to => "drone_attacks#index"
 end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DroneTest < ActiveSupport::TestCase
+class DroneAttackTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  incident_year: 1
+  location: MyString
+  province: MyString
+  city: MyString
+  al_qaida_min: 1
+  al_qaida_max: 1
+  taliban_min: 1
+  taliban_max: 1
+  civilians_min: 1
+  civilians_max: 1
+  forigeners_min: 1
+  forigeners_max: 1
+  total_died_min: 1
+  total_died_max: 1
+  injured_min: 1
+  injured_max: 1
+  women: false
+  url: MyString
+  incident_date: 2012-08-14 11:11:05
+  display_date: 2012-08-14 11:11:05
+
+two:
+  incident_year: 1
+  location: MyString
+  province: MyString
+  city: MyString
+  al_qaida_min: 1
+  al_qaida_max: 1
+  taliban_min: 1
+  taliban_max: 1
+  civilians_min: 1
+  civilians_max: 1
+  forigeners_min: 1
+  forigeners_max: 1
+  total_died_min: 1
+  total_died_max: 1
+  injured_min: 1
+  injured_max: 1
+  women: false
+  url: MyString
+  incident_date: 2012-08-14 11:11:05
+  display_date: 2012-08-14 11:11:05

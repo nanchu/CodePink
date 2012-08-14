@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <h1 style="text-align: center;">Drone Attacks in Pakistan</h1>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 10; padding: 1 }
+        #map_canvas { height: 100% }
+        div#map {margin: 0 auto 0 auto;}
+    </style>
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript">
+        var map;
+        var infowindow;
+        var geocoder;
+        all_addresses = ['Pakistan' ];
+        address_info = ['address 1'];
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var pakistan = new google.maps.LatLng(32.0162, 71.9626);
+            map = new google.maps.Map(document.getElementById('map'), {
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
+                center: pakistan,
+                zoom: 5
+            });
+        }
+    </script>
+</head>
+<body onload="initialize()">
+<div id="map" style="text-align: center; width:1000px; height:600px" padding="5"></div>
+<div id="map_canvas2" style="text-align: center; width:25%; height:25%"></div>
+</body>
+</html>

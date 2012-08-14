@@ -9,37 +9,37 @@
         #map_canvas { height: 100% }
         div#map {margin: 0 auto 0 auto;}
     </style>
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
     <script type="text/javascript">
-        document.onload(function(){
-            alert("Test");
-        });
+        var map;
+        var infowindow;
+        var geocoder;
+        all_addresses = ['Pakistan' ];
+        address_info = ['address 1'];
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var pakistan = new google.maps.LatLng(32.0162, 71.9626);
+            map = new google.maps.Map(document.getElementById('map'), {
+                mapTypeId: google.maps.MapTypeId.TERRAIN,
+                center: pakistan,
+                zoom: 5
+            });
+        }
     </script>
-    <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
-
-    <!--<script type="text/javascript">-->
-        <!--var map;-->
-        <!--var infowindow;-->
-        <!--var geocoder;-->
-        <!--all_addresses = ['Pakistan' ];-->
-        <!--address_info = ['address 1'];-->
-
-        <!--function initialize() {-->
-            <!--geocoder = new google.maps.Geocoder();-->
-            <!--var pakistan = new google.maps.LatLng(32.0162, 71.9626);-->
-            <!--map = new google.maps.Map(document.getElementById('map'), {-->
-                <!--mapTypeId: google.maps.MapTypeId.TERRAIN,-->
-                <!--center: pakistan,-->
-                <!--zoom: 5-->
-            <!--});-->
-        <!--}-->
-    <!--</script>-->
 </head>
 
 <body onload="initialize()">
-
+<script type="text/javascript">
+    document.onload(function(){
+        alert("Test");
+    });
+</script>
 <h1>Drone Attacks in Pakistan</h1>
 
-<div id="map"></div>
+<div id="map" style="width: 200px; height: 200px"></div>
 <div id="map_canvas2"></div>
 
 </body>

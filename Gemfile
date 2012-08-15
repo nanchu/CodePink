@@ -6,11 +6,12 @@ gem 'rails', '3.2.5'
 gem 'httparty'
 gem 'json'
 gem 'pg'
+gem 'execjs'
+gem 'therubyracer'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
-  gem 'pg'
   gem 'rspec-rails', '2.10.0'
 end
 
@@ -35,7 +36,6 @@ end
 gem 'jquery-rails'
 
 group :production do
-  gem 'pg'
   gem 'thin'
 end
 

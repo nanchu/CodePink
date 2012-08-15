@@ -65,5 +65,7 @@ module Codepink
 
     #Heroku requires this to be false
     config.assets.initialize_on_precompile=false
+
+    config.assets.precompile << /^((.*?)\/)?(?!_)[^\/]*$/
   end
 end

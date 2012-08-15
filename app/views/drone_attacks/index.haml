@@ -1,0 +1,36 @@
+
+%h1 Drone Attacks in Pakistan
+
+#map-container
+    #map
+
+#inline-actions
+    %span Max zoom level:
+    %select{:id=>"zoom"}
+        %option{:value=>"-1"} Default
+        %option{:value=>"7"} 7
+        %option{:value=>"8"} 8
+        %option{:value=>"9"} 9
+        %option{:value=>"10"} 10
+        %option{:value=>"11"} 11
+        %option{:value=>"12"} 12
+        %option{:value=>"13"} 13
+        %option{:value=>"14"} 14
+    %span.item Cluster size:
+    %select{:id=>"size"}
+        %option{:value=>"-1"} Default
+        %option{:value=>"40"} 40
+        %option{:value=>"50"} 50
+        %option{:value=>"70"} 70
+        %option{:value=>"80"} 80
+    %span.item Cluster size:
+    %select{:id=>"style"}
+        %option{:value=>"-1"} Default
+        %option{:value=>"0"} People
+        %option{:value=>"1"} Conversation
+        %option{:value=>"2"} Heart
+
+    %input#refresh{:type=>"button", :value=>"Refresh Map", :class=>"item"}
+    %a#clear{:href=>"#"} Clear
+
+    

@@ -24,7 +24,7 @@ group :assets do
 
   gem 'compass-rails'
   gem 'compass'
-  gem 'haml'
+
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -32,6 +32,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml'
 gem 'jquery-rails'
 
 group :production do

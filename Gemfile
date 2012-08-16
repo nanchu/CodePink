@@ -33,6 +33,7 @@ group :assets do
 end
 
 gem 'haml'
+
 gem 'jquery-rails'
 
 group :production do

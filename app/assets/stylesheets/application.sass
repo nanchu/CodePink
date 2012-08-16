@@ -1,22 +1,69 @@
+@import url('http://fonts.googleapis.com/css?family=Rationale')
+@import compass
+
 body
-  background-color: #222
+  background-color: rgb(81, 89, 77)
 
 h1
   text-align: center
-  color: rgb(147, 42, 49)
+  font: 
+    family: 'Rationale', 'Helvetica'
+    weight: bold
+    size: 40px
+  color: rgb(157, 166, 151)
 
-#map
-  margin: 0 auto 0 auto
+.select
+  height: 20px
+  width: auto
+
+
+#container
+  position: relative
   text-align: center
-  width: 1000px
-  height: 600px
-  padding: 5px
+  width: 100%
 
-#infobox
-  border: 2px solid white
-  height: 300px
+#map-container
+  display: inline-block
+
+  #map
+    text-align: center
+    width: 600px
+    height: 600px
+    padding: 5px
+    border: 2px solid #222
+
+#inline-actions
   width: 500px
 
-#map_canvas 
-  height: 100% 
-        
+#data-container
+  display: inline-block
+  margin-left: 10px
+  vertical-align: bottom
+
+  #slider-wrapper
+    width: 300px
+    height: 20px
+    border: 1px solid white
+    margin: 10px 0
+
+  #infobox
+    position: relative
+    top: 0
+    border: 2px solid #222
+    height: 300px
+    width: 300px
+    margin-bottom: 50px
+    font:
+      family: 'Rationale', Helvetica
+      size: 16px
+    #info-header
+      background-color: rgb(157, 166, 151)
+      border-bottom: 1px solid #222
+      height: auto
+      width: auto
+      size: 20px
+    .type
+      font-weight: bold
+
+
+

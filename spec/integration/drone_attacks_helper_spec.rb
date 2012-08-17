@@ -1,9 +1,8 @@
 require 'spec_helper'
 include DroneAttacksHelper
+include BundleDataPuller
 
-def getUrl(pageNumber=1, start=0, limit=1)
-  "http://pakistanbodycount.org/functions.php?action=droneattacks&_dc=1343791499405&page=" + pageNumber.to_s + "&start=" + start.to_s + "&limit=" + limit.to_s + "&sort=display_date&dir=ASC"
-end
+
 url = "http://pakistanbodycount.org/functions.php?action=droneattacks&_dc=1343791499405&page=1&start=0&limit=50&sort=display_date&dir=ASC"
 
 jsonData = "{""success""=>true, ""data""=>[{""incident_year""=>""2004"", ""location""=>""Near Wana"", ""province""=>""FATA"", ""city""=>""south Waziristan"", ""al_qaida_min""=>"""", ""al_qaida_max""=>"""", ""taliban_min""=>"""", ""taliban_max""=>""1"", ""civilians_min""=>""0"", ""civilians_max""=>""4"", ""forigeners_min""=>"""", ""forigeners_max""=>"""", ""total_died_min""=>"""", ""total_died_max""=>""5"", ""injured_min""=>"""", ""injured_max""=>"""", ""women""=>""N"", ""refrences""=>[{""name""=>""Dawn"", ""url""=>""http:\/\/archives.dawn.com\/2004\/06\/19\/top1.htm""}], ""incident_date""=>""1087498800"", ""display_date""=>""18/06/2004""}], ""totalCount""=>""309""}"

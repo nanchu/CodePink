@@ -2,7 +2,8 @@
 @import compass
 
 body
-  background-color: rgb(81, 89, 77)
+  //background-color: rgb(234, 228, 200)
+  background-image: url('/images/whiteSand.png')
 
 h1
   text-align: center
@@ -10,7 +11,34 @@ h1
     family: 'Rationale', 'Helvetica'
     weight: bold
     size: 40px
-  color: rgb(157, 166, 151)
+  color: rgb(81, 89, 77)
+
+#dashboard
+  position: fixed
+  left: 0
+  right: 0
+  bottom: 0
+  height: 60px
+  background-color: #fff
+  z-index: 100
+  font:
+    family: Arial
+    size: 36px
+  color: hotpink
+  .campaign
+    display: inline-block
+    width: 200px
+    height: 100%
+    border: 1px solid pink
+   
+    font-size: 24px
+  #logo
+    float: left
+    padding: 12px
+    a, a:visited, a:active, a:link, .link 
+      text-decoration: none
+      color: hotpink
+
 
 .select
   height: 20px
@@ -21,6 +49,9 @@ h1
   position: relative
   text-align: center
   width: 100%
+  height: 100%
+  margin-bottom: 80px
+  
 
 #map-container
   display: inline-block
@@ -56,12 +87,18 @@ h1
     font:
       family: 'Rationale', Helvetica
       size: 16px
+    color: rgb(157, 166, 151)
+    background-color: rgba(24, 30, 17, .6)
+    +box-shadow(inset #000 2px 2px 15px)
+
     #info-header
       background-color: rgb(157, 166, 151)
       border-bottom: 1px solid #222
       height: auto
       width: auto
       size: 20px
+      color: #222
+      +box-shadow( #000 1px 1px 6px)
     .type
       font-weight: bold
 

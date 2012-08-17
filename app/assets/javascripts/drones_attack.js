@@ -1,14 +1,3 @@
-var script = '<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/markerclusterer';
-if (document.location.search.indexOf('packed') !== -1) {
-    script += '_packed';
-}
-if (document.location.search.indexOf('compiled') !== -1) {
-    script += '_compiled';
-}
-script += '.js"><' + '/script>';
-document.write(script);
-
-
 google.load('maps', '3', {
     other_params: 'sensor=false'
 });
@@ -93,8 +82,7 @@ function refreshMap() {
             new google.maps.Size(24, 32));
 
     for (var i = 0; i < 1000; ++i) {
-        var latLng = new google.maps.LatLng(data.photos[i].latitude,
-                data.photos[i].longitude)
+        var latLng = new google.maps.LatLng(data.photos[i].latitude, data.photos[i].longitude)
         var marker = new google.maps.Marker({
             position: latLng,
             draggable: true,

@@ -1,18 +1,20 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-
 gem 'rails', '3.2.5'
 gem 'httparty'
 gem 'json'
 gem 'pg'
 gem 'execjs'
 gem 'therubyracer'
+gem 'activerecord-postgres-hstore'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
+  gem 'debugger'
 end
 
 # Gems used only for assets and not required

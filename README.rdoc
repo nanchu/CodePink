@@ -2,5 +2,4 @@
 1. rake db:create
 2. rake db:migrate
 
-3. Before starting rails server, run  sass --watch app/assets/stylesheets:public/stylesheets
-This will allow Sass to compile into css.
+3. No need to precompile assets now. Heroku will do it =)

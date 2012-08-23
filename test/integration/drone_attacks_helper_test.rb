@@ -7,7 +7,7 @@ url = "http://pakistanbodycount.org/functions.php?action=droneattacks&_dc=134379
 describe DroneAttacksHelper do
   describe "DataPuller" do
     it "should pull data from api" do
-      dataPuller = DataPuller.new
+      dataPuller = DataHelper.new
       data = dataPuller.pull_data(url)
 
       data.should_not be_empty?

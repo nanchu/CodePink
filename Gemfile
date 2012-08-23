@@ -8,13 +8,18 @@ gem 'pg'
 gem 'execjs'
 gem 'therubyracer'
 gem 'activerecord-postgres-hstore'
+gem 'geokit'
+gem 'whenever', :require => false
 
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
   gem 'rspec-rails', '2.10.0'
-  gem 'debugger'
+  gem 'linecache19', '0.5.13'
+  gem 'ruby-debug-base19', '0.11.26'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+
 end
 
 # Gems used only for assets and not required
@@ -37,6 +42,7 @@ end
 gem 'haml'
 
 gem 'jquery-rails'
+gem 'rabl'
 
 group :production do
   gem 'thin'

@@ -12,7 +12,7 @@ module BundleDataPuller
     pageNumber = startFrom % hundred
     puts pageNumber
 
-    dataPuller = DataPuller.new
+    dataPuller = DataHelper.new
 
     while(!jsonData.nil?)
       url = getUrl(pageNumber, 0, limit)

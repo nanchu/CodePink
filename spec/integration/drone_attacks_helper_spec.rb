@@ -2,65 +2,91 @@ require 'spec_helper'
 include DroneAttacksHelper
 include BundleDataPuller
 
-
-url = "http://pakistanbodycount.org/functions.php?action=droneattacks&_dc=1343791499405&page=1&start=0&limit=50&sort=display_date&dir=ASC"
-
-jsonData = "{""success""=>true, ""data""=>[{""incident_year""=>""2004"", ""location""=>""Near Wana"", ""province""=>""FATA"", ""city""=>""south Waziristan"", ""al_qaida_min""=>"""", ""al_qaida_max""=>"""", ""taliban_min""=>"""", ""taliban_max""=>""1"", ""civilians_min""=>""0"", ""civilians_max""=>""4"", ""forigeners_min""=>"""", ""forigeners_max""=>"""", ""total_died_min""=>"""", ""total_died_max""=>""5"", ""injured_min""=>"""", ""injured_max""=>"""", ""women""=>""N"", ""refrences""=>[{""name""=>""Dawn"", ""url""=>""http:\/\/archives.dawn.com\/2004\/06\/19\/top1.htm""}], ""incident_date""=>""1087498800"", ""display_date""=>""18/06/2004""}], ""totalCount""=>""309""}"
-
-
 describe "DroneAttacksHelper" do
 
-  describe "DataPuller" do
-
-    it "should pull data from api" do
-      dataPuller = DataPuller.new
-      data = dataPuller.pull_data(getUrl())
-
-      data.should_not be_empty
+  describe "DataHelper" do
+    before(:each) do
+      @dataHelper = DataHelper.new
+      singleData = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
+      @singleParsedData = JSON.parse(singleData)
+      multiData = open(Rails.root.to_s + "/TestData/MultiRowData.json", &:read)
+      @multiParsedData = JSON.parse(multiData)
     end
 
-    it "should parse and create drone attack object" do
-      dataPuller = DataPuller.new
-      droneAttack = DroneAttack.new
-
-      data = dataPuller.pull_data(getUrl())
-      droneAttack = dataPuller.create_drone_attack(data["data"][0])
-
-      droneAttack.incident_year.should == 2004
-      droneAttack.location.should == "Near Wana"
-      droneAttack.province.should == "FATA"
-      droneAttack.city.should == "south Waziristan"
-      droneAttack.al_qaida_min.should == nil
-      droneAttack.al_qaida_max.should == nil
-      droneAttack.taliban_min.should == nil
-      droneAttack.taliban_max.should == 1
-      droneAttack.civilians_min.should == 0
-      droneAttack.civilians_max.should == 4
-      droneAttack.forigeners_min.should == nil
-      droneAttack.forigeners_max.should == nil
-      droneAttack.total_died_min.should == nil
-      droneAttack.total_died_max.should == 5
-      droneAttack.injured_min.should == nil
-      droneAttack.injured_max.should == nil
-      droneAttack.women.should == false
-      droneAttack.url.should == "http://archives.dawn.com/2004/06/19/top1.htm"
-      #droneAttack.incident_date.should equal 1087498800
-      droneAttack.display_date.should == "18\/06\/2004"
-
+    it "pull_data should pull data from api" do
+      @multiData = @dataHelper.pull_data(getUrl)
+      @multiData.should_not be_empty
     end
 
-    it "should update database with 15 drone attacks" do
-      dataPuller = DataPuller.new
-      dataPuller.update_db(getUrl(1,0,15))
+    it "refresh_db should take single data and persist in db" do
+      @dataHelper.refresh_db(@singleParsedData)
 
-      DroneAttack.count.should == 15
+      DroneAttack.count.should == 1
+      ReferenceLink.count.should == 1
+      Publisher.count.should == 1
+      drone_attack = DroneAttack.first
+
+      drone_attack.incident_year.should == 2005
+      drone_attack.location.should == "Mir Ali (Near Afghan Border)"
+      drone_attack.province.should == "FATA"
+      drone_attack.city.should == "North Waziristan"
+      drone_attack.al_qaida_min.should == nil
+      drone_attack.al_qaida_max.should == 1
+      drone_attack.taliban_min.should == nil
+      drone_attack.taliban_max.should == nil
+      drone_attack.civilians_min.should == 0
+      drone_attack.civilians_max.should == 1
+      drone_attack.forigeners_min.should == nil
+      drone_attack.forigeners_max.should == nil
+      drone_attack.total_died_min.should == nil
+      drone_attack.total_died_max.should == 2
+      drone_attack.injured_min.should == nil
+      drone_attack.injured_max.should == nil
+      drone_attack.women.should == false
+      drone_attack.reference_links.count.should == 1
+      drone_attack.reference_links[0].publisher.name.should == "MSN"
+      drone_attack.reference_links[0].url.should  == "http://www.msnbc.msn.com/id/7847008/"
+      drone_attack.incident_date.should == 1115492400
+      drone_attack.display_date.strftime("%m/%d/%Y").should == "05\/08\/2005"
+      drone_attack.longitude.should == 69.8597406
+      drone_attack.latitude.should == 32.3202371
     end
 
-    #it "should update database with 300 drone attacks with only 50 per page" do
-    #  dataPuller = DataPuller.new
-    #  dataPuller.update_db(getUrl(1,0,300))
+    it "refresh_db should should completely update db" do
+      @dataHelper.refresh_db(@multiParsedData)
+
+      DroneAttack.count.should > 15
+      ReferenceLink.count.should > 15
+      Publisher.count.should > 15
+    end
+
+    it "has to hit the url and update db with first 20 values from there" do
+      data = @dataHelper.pull_data(getUrl(1,0,20))
+
+      @dataHelper.refresh_db(data)
+
+      DroneAttack.count.should  == 20
+      ReferenceLink.count.should > 20
+      Publisher.count.should > 20
+      drone_attack = DroneAttack.first
+
+      drone_attack.reference_links[0]
+      drone_attack.reference_links[0].publisher.should_not be_nil
+    end
+    it "should refresh database with 300 drone attacks with only 50 per page" do
+      data = @dataHelper.pull_data(getUrl(1,0,99))
+      @dataHelper.refresh_db(data)
+
+      DroneAttack.count.should == 99
+    end
+
+    #it "update_db should update db to " do
+    #  @dataHelper.refresh_db(@singleParsedData)
+    #  DroneAttack.count.should == 1
     #
-    #  DroneAttack.count.should == 300
+    #  @dataHelper.update_db
+    #
+    #  DroneAttack.count.should == 309
     #end
   end
 end

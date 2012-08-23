@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816185540) do
+ActiveRecord::Schema.define(:version => 20120823210855) do
 
   create_table "drone_attacks", :force => true do |t|
     t.integer  "incident_year"
@@ -31,14 +31,34 @@ ActiveRecord::Schema.define(:version => 20120816185540) do
     t.integer  "injured_min"
     t.integer  "injured_max"
     t.boolean  "women"
-    t.string   "url"
-    t.datetime "incident_date"
+    t.integer  "incident_date"
     t.datetime "display_date"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "location_defined"
+    t.integer  "xcoordinate"
+    t.integer  "ycoordinate"
+  end
+
+  create_table "maps", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "publishers", :force => true do |t|
+    t.string   "name"
+    t.integer  "publisher_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "reference_link_id"
+  end
+
+  create_table "reference_links", :force => true do |t|
+    t.text     "url"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "drone_attack_id"
   end
 
 end

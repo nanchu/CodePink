@@ -1,8 +1,10 @@
 class DroneAttacksController < ApplicationController
-  # GET /drone_attacks
-  # GET /drone_attacks.json
+
   def index
-    @url_stub = 'drones'
-    @page_title = 'Drone Attacks'
+    @drone_attacks = DroneAttack.all
+  end
+
+  def show
+    @drone_attack = DroneAttack.find(params[:id])
   end
 end

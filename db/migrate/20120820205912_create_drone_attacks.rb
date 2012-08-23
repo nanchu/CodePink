@@ -18,11 +18,11 @@ class CreateDroneAttacks < ActiveRecord::Migration
       t.integer :injured_min
       t.integer :injured_max
       t.boolean :women
-      t.string :url
-      t.datetime :incident_date
+      t.integer :incident_date
       t.datetime :display_date
 
       t.timestamps
     end
+    #add_index :drone_attacks, :reference_link_id
   end
 end

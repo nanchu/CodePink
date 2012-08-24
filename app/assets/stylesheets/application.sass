@@ -5,13 +5,23 @@ body
   //background-color: rgb(234, 228, 200)
   background-image: url('/images/whiteSand.png')
 
+#header
+  position: absolute
+  margin: 0
+  top: 0
+  right: 0
+  left: 0
+  background-color: #222
+
 h1
   text-align: center
+  line-height: 20px
+  padding: 0
   font: 
     family: 'Rationale', 'Helvetica'
     weight: bold
     size: 40px
-  color: rgb(81, 89, 77)
+  color: #96a697
 
 #dashboard
   position: fixed
@@ -54,14 +64,17 @@ h1
   
 
 #map-container
+  margin-top: 80px
   display: inline-block
 
-  #map
+  #map-svg
+    background-image: url('/images/FATA.png')
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
     text-align: center
-    width: 600px
-    height: 600px
-    padding: 5px
-    border: 2px solid #222
+    width: 700px
+    height: 700px
 
 #inline-actions
   width: 500px
@@ -70,6 +83,15 @@ h1
   display: inline-block
   margin-left: 10px
   vertical-align: bottom
+
+  #map-mini
+    background-image: url('/images/pakistan_map.png')
+    width: 200px
+    height: 200px
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+
 
   #slider-wrapper
     width: 300px

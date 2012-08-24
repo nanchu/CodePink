@@ -1,49 +1,24 @@
-/#dashboard
-/    #logo
-/        %a{:href=>"http://www.codepink4peace.org"} CODEPINK
-/    .campaign
-/        Sign the Petition
-/    .campaign
-/        Join our Peace Delegation
-/    .campaign
-/        Follow the Book Tour
+#dashboard
+    #logo
+        %a{:href=>"http://www.codepink4peace.org"} CODEPINK
+    .campaign
+        Sign the Petition
+    .campaign
+        Join our Peace Delegation
+    .campaign
+        Follow the Book Tour
 
-
-%h1 Drone Strikes in Pakistan
+#header
+    %h1 Drone Strikes in Pakistan
 
 #map-container
-    #map
-
-    %ul#inline-actions
-
-        %select#zoom.select
-            %option{:value=>"-1"} Max Zoom Level
-            %option{:value=>"7"} 7
-            %option{:value=>"8"} 8
-            %option{:value=>"9"} 9
-            %option{:value=>"10"} 10
-            %option{:value=>"11"} 11
-            %option{:value=>"12"} 12
-            %option{:value=>"13"} 13
-            %option{:value=>"14"} 14
- 
-        %select#size.select
-            %option{:value=>"-1"} Cluster Size
-            %option{:value=>"40"} 40
-            %option{:value=>"50"} 50
-            %option{:value=>"70"} 70
-            %option{:value=>"80"} 80
-
-        %select#style.select
-            %option{:value=>"-1"} Cluster Size
-            %option{:value=>"0"} People
-            %option{:value=>"1"} Conversation
-            %option{:value=>"2"} Heart
-
-        %input#refresh.button{:type=>"button", :value=>"Refresh Map", :class=>"item"}
-        %a#clear{:href=>"#"} Clear
+    #map-svg
 
 #data-container
+    
+    #map-mini
+        #title 
+            Pakistan
 
     #slider-wrapper
         #slider
@@ -74,9 +49,4 @@
             %td Total Killed
             %td Percentage
 
-
-        %script(src='http://www.google.com/jsapi' type= 'text/javascript')
-        %script(src='http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/data.json' type='text/javascript')
-        %script(src='/assets/bootstrapper.js' type='text/javascript')
-        %script(src='/assets/drones_attack.js' type='text/javascript')
 

@@ -7,15 +7,10 @@ describe "DroneAttacksHelper" do
   describe "DataHelper" do
     before(:each) do
       @dataHelper = DataHelper.new
-      singleData = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
-      @singleParsedData = JSON.parse(singleData)
-      multiData = open(Rails.root.to_s + "/TestData/MultiRowData.json", &:read)
-      @multiParsedData = JSON.parse(multiData)
-    end
-
-    it "pull_data should pull data from api" do
-      @multiData = @dataHelper.pull_data(getUrl)
-      @multiData.should_not be_empty
+      single_data = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
+      @singleParsedData = JSON.parse(single_data)
+      multi_data = open(Rails.root.to_s + "/TestData/MultiRowData.json", &:read)
+      @multiParsedData = JSON.parse(multi_data)
     end
 
     it "refresh_db should take single data and persist in db" do
@@ -58,26 +53,6 @@ describe "DroneAttacksHelper" do
       DroneAttack.count.should > 15
       ReferenceLink.count.should > 15
       Publisher.count.should > 15
-    end
-
-    it "has to hit the url and update db with first 20 values from there" do
-      data = @dataHelper.pull_data(getUrl(1,0,20))
-
-      @dataHelper.refresh_db(data)
-
-      DroneAttack.count.should  == 20
-      ReferenceLink.count.should > 20
-      Publisher.count.should > 20
-      drone_attack = DroneAttack.first
-
-      drone_attack.reference_links[0]
-      drone_attack.reference_links[0].publisher.should_not be_nil
-    end
-    it "should refresh database with 300 drone attacks with only 50 per page" do
-      data = @dataHelper.pull_data(getUrl(1,0,99))
-      @dataHelper.refresh_db(data)
-
-      DroneAttack.count.should == 99
     end
 
     #it "update_db should update db to " do

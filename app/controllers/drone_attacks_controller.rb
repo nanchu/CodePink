@@ -1,4 +1,5 @@
 class DroneAttacksController < ApplicationController
+  layout 'blank'
 
   def index
     @drone_attacks = DroneAttack.all

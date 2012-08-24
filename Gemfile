@@ -10,6 +10,9 @@ gem 'therubyracer'
 gem 'activerecord-postgres-hstore'
 gem 'geokit'
 gem 'whenever', :require => false
+gem 'haml'
+gem 'jquery-rails'
+gem 'rabl'
 
 
 # Bundle edge Rails instead:
@@ -20,7 +23,6 @@ group :development, :test do
 #  gem 'ruby-debug-base19', '0.11.26'
 #  gem 'ruby-debug19', :require => 'ruby-debug'
 
-end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -39,10 +41,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'haml'
 
-gem 'jquery-rails'
-gem 'rabl'
 
 group :production do
   gem 'thin'

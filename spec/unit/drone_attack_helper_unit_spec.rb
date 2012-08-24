@@ -5,10 +5,10 @@ include BundleDataPuller
 describe "Drone Attack Helper" do
   before(:each) do
     @dataHelper = DataHelper.new
-    singleData = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
-    singleParsedData = JSON.parse(singleData)
-    @attackData= singleParsedData["data"][0]
-    @rowData = singleParsedData["data"][0]["refrences"][0]
+    single_data = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
+    single_parsed_data = JSON.parse(single_data)
+    @attackData= single_parsed_data["data"][0]
+    @rowData = single_parsed_data["data"][0]["refrences"][0]
   end
 
   it "create_publishers should create publisher from jsonData" do

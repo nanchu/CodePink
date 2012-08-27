@@ -10,7 +10,6 @@ module BundleDataPuller
   end
 
   class DataHelper
-    @droneAttackHelper = DroneAttackHelper.new
 
   def refresh_db1
     Rake::Task["db:reset"].execute

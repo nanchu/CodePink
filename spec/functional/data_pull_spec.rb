@@ -6,7 +6,7 @@ describe "Data Pull and persist into db" do
 
   describe "DataHelper" do
     before(:each) do
-      @droneAttackHelper = DataHelper.new
+      @dataHelper = DataHelper.new
     end
 
     it "pull_data should pull data from api" do
@@ -16,7 +16,7 @@ describe "Data Pull and persist into db" do
     end
 
     it "has to hit the url and refresh db with first 20 values from there" do
-      data = @droneAttackHelper.pull_data(getUrl(1,0,5))
+      data = @dataHelper.pull_data(getUrl(1,0,5))
 
       @droneAttackHelper.refresh_db(data)
 

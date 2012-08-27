@@ -4,7 +4,7 @@ include BundleDataPuller
 
 describe "Drone Attack Helper" do
   before(:each) do
-    @dataHelper = DataHelper.new
+    @droneAttackHelper = DroneAttackHelper.new
     single_data = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
     single_parsed_data = JSON.parse(single_data)
     @attackData= single_parsed_data["data"][0]
@@ -12,20 +12,20 @@ describe "Drone Attack Helper" do
   end
 
   it "create_publishers should create publisher from jsonData" do
-    publisher = @dataHelper.create_publisher(@rowData)
+    publisher = @droneAttackHelper.create_publisher(@rowData)
 
     publisher.name.should == "MSN"
   end
 
   it "create_reference_link should create referenceLink" do
-    reference_link = @dataHelper.create_reference_link(@rowData)
+    reference_link = @droneAttackHelper.create_reference_link(@rowData)
 
     reference_link.url.should == "http://www.msnbc.msn.com/id/7847008/"
     reference_link.publisher.name == "MSN"
   end
 
   it "create_drone_attack should create drone attack" do
-    drone_attack = @dataHelper.create_drone_attack(@attackData)
+    drone_attack = @droneAttackHelper.create_drone_attack(@attackData)
     drone_attack.incident_year.should == 2005
     drone_attack.location.should == "Mir Ali (Near Afghan Border)"
     drone_attack.province.should == "FATA"

@@ -3,3 +3,14 @@
 2. rake db:migrate
 
 3. No need to precompile assets now. Heroku will do it =)
+
+
+Prepare Test Database:
+
+rake db:test:prepare
+
+
+
+To refresh database:
+
+rake refreshdb

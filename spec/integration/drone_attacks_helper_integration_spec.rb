@@ -6,7 +6,7 @@ describe "DroneAttacksHelper" do
 
   describe "DataHelper" do
     before(:each) do
-      @dataHelper = DataHelper.new
+      @droneAttackHelper = DataHelper.new
       single_data = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
       @singleParsedData = JSON.parse(single_data)
       multi_data = open(Rails.root.to_s + "/TestData/MultiRowData.json", &:read)
@@ -14,7 +14,7 @@ describe "DroneAttacksHelper" do
     end
 
     it "refresh_db should take single data and persist in db" do
-      @dataHelper.refresh_db(@singleParsedData)
+      @droneAttackHelper.refresh_db(@singleParsedData)
 
       DroneAttack.count.should == 1
       ReferenceLink.count.should == 1
@@ -48,7 +48,7 @@ describe "DroneAttacksHelper" do
     end
 
     it "refresh_db should should completely update db" do
-      @dataHelper.refresh_db(@multiParsedData)
+      @droneAttackHelper.refresh_db(@multiParsedData)
 
       DroneAttack.count.should > 15
       ReferenceLink.count.should > 15

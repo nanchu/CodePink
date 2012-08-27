@@ -103,8 +103,39 @@ module DroneAttacksHelper
           droneAttack.reference_links << ref_link
         end
       end
-      droneAttack.xcoordinate= Random.rand(0...500)
-      droneAttack.ycoordinate= Random.rand(0...500)
+      if droneAttack.city == "North Waziristan"
+        droneAttack.xcoordinate= 100
+        droneAttack.ycoordinate= 400
+      elsif droneAttack.city == "South Waziristan"
+        droneAttack.xcoordinate=125
+        droneAttack.ycoordinate=200
+      elsif droneAttack.city == "Bajaur Agency"
+        droneAttack.xcoordinate=350
+        droneAttack.ycoordinate=285
+      elsif
+        droneAttack.city == "Bannu"
+        droneAttack.xcoordinate=345
+        droneAttack.ycoordinate=100
+      elsif
+      droneAttack.city == "Khyber"
+        droneAttack.xcoordinate=305
+        droneAttack.ycoordinate=199
+      elsif
+      droneAttack.city == "Kurram Agency"
+        droneAttack.xcoordinate=45
+        droneAttack.ycoordinate=371
+      elsif
+      droneAttack.city == "Khyber"
+        droneAttack.xcoordinate=235
+        droneAttack.ycoordinate=488
+      elsif
+      droneAttack.city == "Khyber Agency"
+        droneAttack.xcoordinate=208
+        droneAttack.ycoordinate=430
+      else
+        droneAttack.xcoordinate= Random.rand(0...500)
+        droneAttack.ycoordinate= Random.rand(0...500)
+      end
       return droneAttack
     end
   end

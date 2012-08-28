@@ -1,5 +1,6 @@
 
 class DroneAttacksController < ApplicationController
+  #respond_to :json { render :layout => 'blank'}
   # GET /drone_attacks
   # GET /drone_attacks.json
   def index
@@ -7,7 +8,7 @@ class DroneAttacksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @drone_attacks }
+      format.json { render :layout => 'blank'}
     end
   end
 
@@ -17,8 +18,8 @@ class DroneAttacksController < ApplicationController
     @drone_attack = DroneAttack.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @drone_attack }
+      #format.html # show.html.erb
+      #format.json { render json: @drone_attack }
     end
   end
 

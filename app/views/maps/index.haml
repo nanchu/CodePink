@@ -1,3 +1,34 @@
+- content_for :styles do
+    = stylesheet_link_tag 'jquery.slider.min.css'
+
+- content_for :scripts do
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'
+    = javascript_include_tag 'crossfilter.min'
+    = javascript_include_tag 'd3.v2.min'
+    = javascript_include_tag 'drone-strike.min'
+    = javascript_include_tag 'jquery.slider.min'
+    = javascript_include_tag 'underscore-min'
+    = javascript_include_tag 'underscore.string.min'
+    :javascript
+        jQuery(document).ready(function() {
+            jQuery("#yearSlider").slider({
+                from: 2002,
+                to: 2012,
+                step: 1,
+                scale: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+                round: 0,
+                format: {format: "####"},
+                onstatechange: function(value) {
+                    var years = value.split(';');
+                    //data.filterYearsInclusive(years[0], years[1]);
+                },
+                smooth: false,
+                limits: false,
+                dimension: '',
+                skin: "classic"
+            });
+        });
+
 #dashboard
     #logo
         %a{:href=>"http://www.codepink4peace.org"} CODEPINK
@@ -22,31 +53,32 @@
 
     #slider-wrapper
         #slider
+            %input{:id => "yearSlider", :type => "slider", :name => "yearRange", :value => "2002;2012"}
         #before
         #after
 
-    %table#infobox
+    %table#stats-table
         %th#info-header{:colspan=>"3"}
-            Location: Wana - Mir Ali
+            Location: <span class="header">
         %tr
-            %td.type AQ
+            %td.type
             %td Total Killed
             %td Percentage
+        %tr
+            %td.type Al-Qaeda
+            %td <span class="Aq">
+            %td <span class="AqPercentage">
         %tr
             %td.type Taliban
-            %td Total Killed
-            %td Percentage
+            %td <span class="Taliban">
+            %td <span class="TalibanPercentage">
         %tr
             %td.type Civilian
-            %td Total Killed
-            %td Percentage
+            %td <span class="Civilian">
+            %td <span class="CivilianPercentage">
         %tr
             %td.type Foreigner
-            %td Total Killed
-            %td Percentage
-        %tr
-            %td.type Women
-            %td Total Killed
-            %td Percentage
+            %td <span class="Foreigner">
+            %td <span class="ForeignerPercentage">
 
 

@@ -1,1 +1,33 @@
-<!--<div id="drone_attacks" data-articles="<%= render(template: "drone_attacks/index.json.rabl") %>"></div>-->
+<h1>Listing drone_attacks</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>City</th>
+    <th>Province</th>
+    <th>Location</th>
+    <th>Xcoordinate</th>
+    <th>Ycoordinate</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @drone_attacks.each do |drone_attack| %>
+      <tr>
+        <td><%= drone_attack.id %></td>
+        <td><%= drone_attack.city %></td>
+        <td><%= drone_attack.province %></td>
+        <td><%= drone_attack.location %></td>
+        <td><%= drone_attack.xcoordinate %></td>
+        <td><%= drone_attack.ycoordinate %></td>
+        <td><%= link_to 'Show', drone_attack %></td>
+        <td><%= link_to 'Edit', edit_drone_attack_path(drone_attack) %></td>
+        <td><%= link_to 'Destroy', drone_attack, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drone attack', new_drone_attack_path %>

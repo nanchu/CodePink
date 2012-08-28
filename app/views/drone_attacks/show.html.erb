@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @drone_attack.id %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @drone_attack.city %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= @drone_attack.province %>
+</p>
+
+<p>
+  <b>Xcoord:</b>
+  <%= @drone_attack.xcoordinate %>
+</p>
+
+<p>
+  <b>Ycoord:</b>
+  <%= @drone_attack.ycoordinate %>
+</p>
+
+
+<%= link_to 'Edit', edit_drone_attack_path(@drone_attack) %> |
+<%= link_to 'Back', drone_attacks_path %>

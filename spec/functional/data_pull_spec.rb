@@ -10,7 +10,7 @@ describe "Data Pull and persist into db" do
     end
 
     it "pull_data should pull data from api" do
-      @multiData = @droneAttackHelper.pull_data(getUrl)
+      @multiData = @dataHelper.pull_data(getUrl)
 
       @multiData.should_not be_empty
     end
@@ -18,7 +18,7 @@ describe "Data Pull and persist into db" do
     it "has to hit the url and refresh db with first 20 values from there" do
       data = @dataHelper.pull_data(getUrl(1,0,5))
 
-      @droneAttackHelper.refresh_db(data)
+      @dataHelper.refresh_db(data)
 
       DroneAttack.count.should  == 5
       ReferenceLink.count.should > 4

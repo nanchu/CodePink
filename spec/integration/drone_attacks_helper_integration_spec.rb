@@ -43,8 +43,8 @@ describe "DroneAttacksHelper" do
       drone_attack.reference_links[0].url.should  == "http://www.msnbc.msn.com/id/7847008/"
       drone_attack.incident_date.should == 1115492400
       drone_attack.display_date.strftime("%m/%d/%Y").should == "05\/08\/2005"
-      drone_attack.longitude.should == 69.8597406
-      drone_attack.latitude.should == 32.3202371
+      #drone_attack.longitude.should == 69.8597406
+      #drone_attack.latitude.should == 32.3202371
     end
 
     it "refresh_db should should completely update db" do

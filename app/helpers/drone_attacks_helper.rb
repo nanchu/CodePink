@@ -28,11 +28,11 @@ module DroneAttacksHelper
 
       province = droneAttack.province= attackData["province"]
       city = droneAttack.city= attackData["city"]
-      geoLocation = province.to_s + " " + city.to_s
+      #geoLocation = province.to_s + " " + city.to_s
 
-      coordinates = MultiGeocoder.geocode(geoLocation)
-      droneAttack.latitude= coordinates.lat
-      droneAttack.longitude= coordinates.lng
+      #coordinates = MultiGeocoder.geocode(geoLocation)
+      #droneAttack.latitude= coordinates.lat
+      #droneAttack.longitude= coordinates.lng
 
       droneAttack.al_qaida_min= attackData["al_qaida_min"]
       droneAttack.al_qaida_max= attackData["al_qaida_max"]

@@ -19,8 +19,8 @@
         <td><%= drone_attack.location.city %></td>
         <td><%= drone_attack.location.province %></td>
         <td><%= drone_attack.location.information %></td>
-        <td><%= drone_attack.xcoordinate %></td>
-        <td><%= drone_attack.ycoordinate %></td>
+        <td><%= drone_attack.location.xcoordinate %></td>
+        <td><%= drone_attack.location.ycoordinate %></td>
         <td><%= link_to 'Show', drone_attack %></td>
         <td><%= link_to 'Edit', edit_drone_attack_path(drone_attack) %></td>
         <td><%= link_to 'Destroy', drone_attack, confirm: 'Are you sure?', method: :delete %></td>

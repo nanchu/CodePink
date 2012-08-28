@@ -1,16 +1,21 @@
-
 1. rake db:create
 2. rake db:migrate
 
 3. No need to precompile assets now. Heroku will do it =)
-
 
 Prepare Test Database:
 
 rake db:test:prepare
 
 
-
 To refresh database:
 
 rake refreshdb
+
+
+Endpoints:
+
+'/' => main app
+'/drone_attacks.json' => all drone attacks in json format
+'/drone_attacks' => list of all drone attacks with links to edit
+'/drone_attacks/{drone_attack_id}/edit' => edit drone attack with id

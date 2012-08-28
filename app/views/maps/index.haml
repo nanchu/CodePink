@@ -10,18 +10,37 @@
     = javascript_include_tag 'underscore-min'
     = javascript_include_tag 'underscore.string.min'
     :javascript
+        jQuery.getJSON("/drone_attacks.json", function(json) {
+            var map = d3.select("#map-svg").append("svg").attr("height", 700).attr("width", 900);
+            //TODO: dynamically append the g elements and get the coordinates from the json
+            map.append("g").attr("id", "south_waziristan").attr("transform", "translate(100,370)");
+            map.append("g").attr("id", "north_waziristan").attr("transform", "translate(180,260)");
+            map.append("g").attr("id", "bajaur_agency").attr("transform", "translate(390,200)");
+            map.append("g").attr("id", "bannu").attr("transform", "translate(300,200)");
+            map.append("g").attr("id", "khyber").attr("transform", "translate(420,400)");
+            map.append("g").attr("id", "khyber_agency").attr("transform", "translate(450,410)");
+            map.append("g").attr("id", "orazkai").attr("transform", "translate(500,200)");
+            map.append("g").attr("id", "kurram_agency").attr("transform", "translate(50,500)");
+            map.append("g").attr("id", "lower_kurram_agency").attr("transform", "translate(50,550)");
+
+            var data = new drone.Data(json);
+            drone.droneTargetMap(map, data).render();
+            drone.statsTable(data).render();
+            
+            jQuery("#yearSlider").slider().onstatechange = function(value) {
+                var years = value.split(';');
+                data.filterYearsInclusive(years[0], years[1]);
+            };
+        });
+        
         jQuery(document).ready(function() {
             jQuery("#yearSlider").slider({
-                from: 2002,
+                from: 2003,
                 to: 2012,
                 step: 1,
-                scale: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012'],
+                scale: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012'],
                 round: 0,
                 format: {format: "####"},
-                onstatechange: function(value) {
-                    var years = value.split(';');
-                    //data.filterYearsInclusive(years[0], years[1]);
-                },
                 smooth: false,
                 limits: false,
                 dimension: '',
@@ -65,6 +84,9 @@
             %td Total Killed
             %td Percentage
         %tr
+            %td.type Total
+            %td <span class="Total">
+        %tr
             %td.type Al-Qaeda
             %td <span class="Aq">
             %td <span class="AqPercentage">
@@ -80,5 +102,6 @@
             %td.type Foreigner
             %td <span class="Foreigner">
             %td <span class="ForeignerPercentage">
-
-
+        %tr
+            %td.type Injured
+            %td <span class="Injured">

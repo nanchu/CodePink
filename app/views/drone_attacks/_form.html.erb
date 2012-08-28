@@ -1,33 +1,17 @@
 <%= form_for(@drone_attack) do |f| %>
-    <% if @drone_attack.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@drone_attack.errors.count, "error") %> prohibited this drone_attack from being saved:</h2>
-
-          <ul>
-            <% @drone_attack.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+    <p>
+      <%= f.label :incident_year %><br />
+      <%= f.text_field :incident_year %>
+    </p>
+    <%= f.fields_for :reference_links do |builder|  %>
+    <p>
+      <%= builder.label :url, "URL" %><br/>
+      <%= builder.text_field :url %>
+    </p>
+    <p>
+      <%= builder.label :publisher, "Publisher" %>
+      <%= f.collection_select(:location_id, Publisher.all, :id, :name) %>
+    </p>
     <% end %>
-
-    <div class="field">
-      <%= f.label :location %><br />
-      <%= f.text_field :city %>
-    </div>
-    <div class="field">
-      <%= f.label :province %><br />
-      <%= f.text_field :province %>
-    </div>
-    <div class="field">
-      <%= f.label :xcoordinate %><br />
-      <%= f.number_field :xcoordinate %>
-    </div>
-    <div class="field">
-      <%= f.label :ycoordinate %><br />
-      <%= f.number_field :ycoordinate %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    <p><%= f.submit "Submit" %></p>
 <% end %>

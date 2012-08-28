@@ -27,10 +27,10 @@ class DroneAttacksController < ApplicationController
   # GET /drone_attacks/new.json
   def new
     @drone_attack = DroneAttack.new
+    @drone_attack.reference_links.build
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @drone_attack }
+      format.html
     end
   end
 

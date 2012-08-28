@@ -16,9 +16,9 @@
   <% @drone_attacks.each do |drone_attack| %>
       <tr>
         <td><%= drone_attack.id %></td>
-        <td><%= drone_attack.city %></td>
-        <td><%= drone_attack.province %></td>
-        <td><%= drone_attack.location %></td>
+        <td><%= drone_attack.location.city %></td>
+        <td><%= drone_attack.location.province %></td>
+        <td><%= drone_attack.location.information %></td>
         <td><%= drone_attack.xcoordinate %></td>
         <td><%= drone_attack.ycoordinate %></td>
         <td><%= link_to 'Show', drone_attack %></td>

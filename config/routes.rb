@@ -1,4 +1,8 @@
 Codepink::Application.routes.draw do
+  resources :locations
+
+  resources :users
+
   #resources :maps
   #
   resources :drone_attacks

@@ -11,13 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120823210855) do
+ActiveRecord::Schema.define(:version => 20120828193454) do
 
   create_table "drone_attacks", :force => true do |t|
     t.integer  "incident_year"
-    t.string   "location"
-    t.string   "province"
-    t.string   "city"
     t.integer  "al_qaida_min"
     t.integer  "al_qaida_max"
     t.integer  "taliban_min"
@@ -35,10 +32,17 @@ ActiveRecord::Schema.define(:version => 20120823210855) do
     t.datetime "display_date"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.float    "latitude"
-    t.float    "longitude"
+    t.integer  "location_id"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "city"
+    t.string   "province"
+    t.string   "information"
     t.integer  "xcoordinate"
     t.integer  "ycoordinate"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "maps", :force => true do |t|
@@ -59,6 +63,13 @@ ActiveRecord::Schema.define(:version => 20120823210855) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "drone_attack_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

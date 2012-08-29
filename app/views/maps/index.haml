@@ -12,17 +12,7 @@
     :javascript
         jQuery.getJSON("/drone_attacks.json", function(json) {
             var map = d3.select("#map-svg").append("svg").attr("height", 700).attr("width", 900);
-            //TODO: dynamically append the g elements and get the coordinates from the json
-            map.append("g").attr("id", "south_waziristan").attr("transform", "translate(100,370)");
-            map.append("g").attr("id", "north_waziristan").attr("transform", "translate(180,260)");
-            map.append("g").attr("id", "bajaur_agency").attr("transform", "translate(390,200)");
-            map.append("g").attr("id", "bannu").attr("transform", "translate(300,200)");
-            map.append("g").attr("id", "khyber").attr("transform", "translate(420,400)");
-            map.append("g").attr("id", "khyber_agency").attr("transform", "translate(450,410)");
-            map.append("g").attr("id", "orazkai").attr("transform", "translate(500,200)");
-            map.append("g").attr("id", "kurram_agency").attr("transform", "translate(50,500)");
-            map.append("g").attr("id", "lower_kurram_agency").attr("transform", "translate(50,550)");
-
+            drone.initializeSVG(json);
             var data = new drone.Data(json);
             drone.droneTargetMap(map, data).render();
             drone.statsTable(data).render();

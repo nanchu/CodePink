@@ -11,9 +11,9 @@
     = javascript_include_tag 'underscore.string.min'
     :javascript
         jQuery.getJSON("/drone_attacks.json", function(json) {
-            var map = d3.select("#map-svg").append("svg").attr("height", 700).attr("width", 900);
+            var data = new drone.Data(json),
+                map = d3.select("#map-svg svg");
             drone.initializeSVG(json);
-            var data = new drone.Data(json);
             drone.droneTargetMap(map, data).render();
             drone.statsTable(data).render();
             
@@ -53,6 +53,7 @@
 
 #map-container
     #map-svg
+        %svg
 
 #data-container
     

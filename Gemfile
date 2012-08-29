@@ -13,6 +13,7 @@ gem 'whenever', :require => false
 gem 'haml'
 gem 'jquery-rails'
 gem 'rabl'
+gem 'bcrypt-ruby', '3.0.1'
 
 
 # Bundle edge Rails instead:

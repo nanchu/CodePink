@@ -1,17 +1,9 @@
 Codepink::Application.routes.draw do
+
   resources :locations
-
   resources :users
-
-  #resources :maps
-  #
+  resources :publishers
   resources :drone_attacks
-
-  #resources :reference_links
-
-  #resources :publishers
-
-  #resources :drone_attacks, :test
 
   root :to => "maps#index"
   match "/tests" => "tests#index"

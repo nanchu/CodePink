@@ -52,7 +52,12 @@ module DroneAttacksHelper
 
     def create_publisher(raw_data)
       name = raw_data["name"]
-      publisher = Publisher.create(:name => name)
+      name_in_db = Publisher.where(:name => name ).first
+      if name_in_db.nil?
+        publisher = Publisher.create(:name => name)
+      else
+        publisher = name_in_db
+      end
       return publisher
     end
 

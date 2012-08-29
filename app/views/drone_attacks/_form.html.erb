@@ -3,15 +3,80 @@
       <%= f.label :incident_year %><br />
       <%= f.text_field :incident_year %>
     </p>
+    <p>
+      <%= f.label :incident_date %><br />
+      <%= f.text_field :incident_date %>
+    </p>
+    <p>
+      <%= f.label :display_date %><br />
+      <%= f.text_field :display_date %>
+    </p>
+    <p>
+      <%= f.label :location %><br />
+      <%= f.collection_select(:location_id, Location.all, :id, :city) %>
+    </p>
+    <p>
+      <%= f.label :al_qaida_min %><br />
+      <%= f.text_field :al_qaida_min %>
+    </p>
+    <p>
+      <%= f.label :al_qaida_max %><br />
+      <%= f.text_field :al_qaida_max %>
+    </p>
+    <p>
+      <%= f.label :taliban_min %><br />
+      <%= f.text_field :taliban_min %>
+    </p>
+    <p>
+      <%= f.label :taliban_max %><br />
+      <%= f.text_field :taliban_max %>
+    </p>
+    <p>
+      <%= f.label :civilians_min %><br />
+      <%= f.text_field :civilians_min %>
+    </p>
+    <p>
+      <%= f.label :civilians_max %><br />
+      <%= f.text_field :civilians_max %>
+    </p>
+    <p>
+      <%= f.label :forigeners_min %><br />
+      <%= f.text_field :forigeners_min %>
+    </p>
+    <p>
+      <%= f.label :forigeners_max %><br />
+      <%= f.text_field :forigeners_max %>
+    </p>
+    <p>
+      <%= f.label :total_died_min %><br />
+      <%= f.text_field :total_died_min %>
+    </p>
+    <p>
+      <%= f.label :total_died_max %><br />
+      <%= f.text_field :total_died_max %>
+    </p>
+    <p>
+      <%= f.label :injured_min %><br />
+      <%= f.text_field :injured_min %>
+    </p>
+    <p>
+      <%= f.label :injured_max %><br />
+      <%= f.text_field :injured_max %>
+    </p>
+    <p>
+      <%= f.label :women %><br />
+      <%= f.check_box :women %>
+    </p>
     <%= f.fields_for :reference_links do |builder|  %>
     <p>
       <%= builder.label :url, "URL" %><br/>
       <%= builder.text_field :url %>
     </p>
     <p>
-      <%= builder.label :publisher, "Publisher" %>
-      <%= f.collection_select(:location_id, Publisher.all, :id, :name) %>
+      <%= builder.label :publisher, "Publisher" %><br/>
+      <%= builder.collection_select(:publisher_id, Publisher.all, :id, :name) %>
     </p>
+
     <% end %>
-    <p><%= f.submit "Submit" %></p>
+    <p><%= f.submit  %></p>
 <% end %>

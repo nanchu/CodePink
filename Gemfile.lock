@@ -66,6 +66,11 @@ GEM
     eventmachine (0.12.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (2.3.2)
+      activesupport
+    factory_girl_rails (1.4.0)
+      factory_girl (~> 2.3.0)
+      railties (>= 3.0.0)
     ffi (1.1.5)
     fssm (0.2.9)
     geokit (1.6.5)
@@ -182,6 +187,7 @@ DEPENDENCIES
   compass
   compass-rails
   execjs
+  factory_girl_rails (= 1.4.0)
   geokit
   haml
   httparty

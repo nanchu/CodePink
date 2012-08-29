@@ -17,7 +17,7 @@ module DroneAttacksHelper
       province =  update_name(attackData["province"].downcase)
       city = update_name(attackData["city"].downcase)
       information = attackData["location"]
-      reference_location = Location.where(:city => city, :province => province).first
+      reference_location = Location.where(:city => city, :province => province, :information => information).first
       if reference_location.nil?
         location = create_location(city, province, information)
         droneAttack.location= location

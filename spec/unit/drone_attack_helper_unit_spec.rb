@@ -27,9 +27,9 @@ describe "Drone Attack Helper" do
   it "create_drone_attack should create drone attack" do
     drone_attack = @droneAttackHelper.create_drone_attack(@attackData)
     drone_attack.incident_year.should == 2005
-    drone_attack.location.should == "Mir Ali (Near Afghan Border)"
-    drone_attack.province.should == "FATA"
-    drone_attack.city.should == "North Waziristan"
+    drone_attack.location.information.should == "Mir Ali (Near Afghan Border)"
+    drone_attack.location.province.should == "fata"
+    drone_attack.location.city.should == "north_waziristan"
     drone_attack.al_qaida_min.should == nil
     drone_attack.al_qaida_max.should == 1
     drone_attack.taliban_min.should == nil
@@ -49,7 +49,7 @@ describe "Drone Attack Helper" do
     drone_attack.display_date.strftime("%m/%d/%Y").should == "05\/08\/2005"
     #drone_attack.longitude.should == 69.8597406
     #drone_attack.latitude.should == 32.3202371
-    drone_attack.xcoordinate.should_not be_nil
-    drone_attack.ycoordinate.should_not be_nil
+    drone_attack.location.xcoordinate.should_not be_nil
+    drone_attack.location.ycoordinate.should_not be_nil
   end
 end

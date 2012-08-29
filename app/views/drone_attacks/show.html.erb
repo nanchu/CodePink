@@ -7,24 +7,24 @@
 
 <p>
   <b>City:</b>
-  <%= @drone_attack.city %>
+  <%= @drone_attack.location.city %>
 </p>
 
 <p>
   <b>Province:</b>
-  <%= @drone_attack.province %>
+  <%= @drone_attack.location.province %>
 </p>
 
 <p>
   <b>Xcoord:</b>
-  <%= @drone_attack.xcoordinate %>
+  <%= @drone_attack.location.xcoordinate %>
 </p>
 
 <p>
   <b>Ycoord:</b>
-  <%= @drone_attack.ycoordinate %>
+  <%= @drone_attack.location.ycoordinate %>
 </p>
 
 
-<%= link_to 'Edit', edit_drone_attack_path(@drone_attack) %> |
+<%= link_to 'Edit', edit_drone_attack_path(@drone_attack) %>
 <%= link_to 'Back', drone_attacks_path %>

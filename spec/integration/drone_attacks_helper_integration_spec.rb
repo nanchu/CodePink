@@ -22,9 +22,8 @@ describe "DroneAttacksHelper" do
       drone_attack = DroneAttack.first
 
       drone_attack.incident_year.should == 2005
-      drone_attack.location.should == "Mir Ali (Near Afghan Border)"
-      drone_attack.province.should == "FATA"
-      drone_attack.city.should == "North Waziristan"
+      drone_attack.location.city.should == "north_waziristan"
+      drone_attack.location.province.should == "fata"
       drone_attack.al_qaida_min.should == nil
       drone_attack.al_qaida_max.should == 1
       drone_attack.taliban_min.should == nil

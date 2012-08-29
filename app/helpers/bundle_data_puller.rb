@@ -11,11 +11,7 @@ module BundleDataPuller
 
   class DataHelper
 
-  def refresh_db1
-    Rake::Task["db:reset"].execute
-    data = pull_data(getUrl(1,0,9999))
-    refresh_db(data)
-  end
+
 
   def update_db()
     @droneAttackHelper = DroneAttackHelper.new
@@ -76,5 +72,12 @@ module BundleDataPuller
       pageNumber+=1
     end
   end
+
+  def refresh_db1
+    Rake::Task["db:reset"].execute
+    data = pull_data(getUrl(1,0,9999))
+    refresh_db(data)
+  end
+
   end
 end

@@ -6,7 +6,7 @@ describe "DroneAttacksHelper" do
 
   describe "DataHelper" do
     before(:each) do
-      @dataHelper = DataHelper.new
+      @droneAttackHelper = DataHelper.new
       single_data = open(Rails.root.to_s + "/TestData/SingleRowData.json", &:read)
       @singleParsedData = JSON.parse(single_data)
       multi_data = open(Rails.root.to_s + "/TestData/MultiRowData.json", &:read)
@@ -14,7 +14,7 @@ describe "DroneAttacksHelper" do
     end
 
     it "refresh_db should take single data and persist in db" do
-      @dataHelper.refresh_db(@singleParsedData)
+      @droneAttackHelper.refresh_db(@singleParsedData)
 
       DroneAttack.count.should == 1
       ReferenceLink.count.should == 1
@@ -22,9 +22,8 @@ describe "DroneAttacksHelper" do
       drone_attack = DroneAttack.first
 
       drone_attack.incident_year.should == 2005
-      drone_attack.location.should == "Mir Ali (Near Afghan Border)"
-      drone_attack.province.should == "FATA"
-      drone_attack.city.should == "North Waziristan"
+      drone_attack.location.city.should == "north_waziristan"
+      drone_attack.location.province.should == "fata"
       drone_attack.al_qaida_min.should == nil
       drone_attack.al_qaida_max.should == 1
       drone_attack.taliban_min.should == nil
@@ -43,12 +42,12 @@ describe "DroneAttacksHelper" do
       drone_attack.reference_links[0].url.should  == "http://www.msnbc.msn.com/id/7847008/"
       drone_attack.incident_date.should == 1115492400
       drone_attack.display_date.strftime("%m/%d/%Y").should == "05\/08\/2005"
-      drone_attack.longitude.should == 69.8597406
-      drone_attack.latitude.should == 32.3202371
+      #drone_attack.longitude.should == 69.8597406
+      #drone_attack.latitude.should == 32.3202371
     end
 
     it "refresh_db should should completely update db" do
-      @dataHelper.refresh_db(@multiParsedData)
+      @droneAttackHelper.refresh_db(@multiParsedData)
 
       DroneAttack.count.should > 15
       ReferenceLink.count.should > 15

@@ -54,6 +54,18 @@ h1
   height: 20px
   width: auto
 
+circle.selected
+
+circle.deselected
+  stroke: grey
+  fill: #ccc
+
+.drone_target
+  stroke: black
+  stroke-width: 2
+  fill: red
+  fill-opacity: .5
+  cursor: pointer
 
 #container
   position: relative
@@ -96,10 +108,9 @@ h1
   #slider-wrapper
     width: 300px
     height: 20px
-    border: 1px solid white
-    margin: 10px 0
+    margin: 20px 0
 
-  #infobox
+  #stats-table
     position: relative
     top: 0
     border: 2px solid #222

@@ -2,9 +2,6 @@ class CreateDroneAttacks < ActiveRecord::Migration
   def change
     create_table :drone_attacks do |t|
       t.integer :incident_year
-      t.string :location
-      t.string :province
-      t.string :city
       t.integer :al_qaida_min
       t.integer :al_qaida_max
       t.integer :taliban_min

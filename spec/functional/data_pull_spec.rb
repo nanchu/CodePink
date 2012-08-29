@@ -16,27 +16,27 @@ describe "Data Pull and persist into db" do
     end
 
     it "has to hit the url and refresh db with first 20 values from there" do
-      data = @dataHelper.pull_data(getUrl(1,0,20))
+      data = @dataHelper.pull_data(getUrl(1,0,5))
 
       @dataHelper.refresh_db(data)
 
-      DroneAttack.count.should  == 20
-      ReferenceLink.count.should > 20
-      Publisher.count.should > 20
+      DroneAttack.count.should  == 5
+      ReferenceLink.count.should > 4
+      Publisher.count.should > 4
 
       drone_attack = DroneAttack.first
 
       drone_attack.reference_links[0]
       drone_attack.reference_links[0].publisher.should_not be_nil
     end
-    it "should refresh database with all drone attacks" do
-      initData = @dataHelper.pull_data(getUrl(1,0,1))
-      total_attacks = initData["totalCount"]
-      data = @dataHelper.pull_data(getUrl(1,0,total_attacks))
-      @dataHelper.refresh_db(data)
-
-      DroneAttack.count.should == total_attacks
-    end
+    #it "should refresh database with all drone attacks" do
+    #  initData = @dataHelper.pull_data(getUrl(1,0,1))
+    #  total_attacks = initData["totalCount"]
+    #  data = @dataHelper.pull_data(getUrl(1,0,total_attacks))
+    #  @dataHelper.refresh_db(data)
+    #
+    #  DroneAttack.count.should == total_attacks
+    #end
   end
 end
 

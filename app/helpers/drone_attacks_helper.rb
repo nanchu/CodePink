@@ -1,86 +1,29 @@
 require 'httparty'
 require 'json'
 require 'geokit'
+
 include GeoKit::Geocoders
 
 module DroneAttacksHelper
-  class DataHelper
+  class DroneAttackHelper
 
-    def getUrl(pageNumber=1, start=0, limit=1)
-      "http://pakistanbodycount.org/functions.php?action=droneattacks&_dc=1343791499405&page=" + pageNumber.to_s + "&start=" + start.to_s + "&limit=" + limit.to_s + "&sort=display_date&dir=ASC"
-    end
 
-    def refresh_db1
-      data = pull_data(getUrl(1,0,9999))
-      refresh_db(data)
-    end
-
-    def update_db()
-      initData = pull_data(getUrl(1,0,1))
-      number_attacks = initData["totalCount"]
-      numberDrones = DroneAttack.count
-      data = pull_data(getUrl(pageNumber=1, start=numberDrones, limit=number_attacks))
-
-      i = 0
-
-      while i < number_attacks.to_i
-        row = data["data"][i]
-        if row.nil?
-          return
-        end
-        drone = create_drone_attack(row)
-        drone.save
-        i += 1
-      end
-    end
-
-    def refresh_db(parsed_data)
-      number_attacks = parsed_data["totalCount"]
-      i = 0
-
-      while i < number_attacks.to_i
-        attackData = parsed_data["data"][i]
-        if attackData.nil?
-          return
-        end
-        droneAttack = create_drone_attack(attackData)
-        droneAttack.save
-        i +=1
-      end
-    end
-
-    def pull_data(url)
-      response = HTTParty.get(url)
-      JSON.parse(response.body)
-    end
-
-    def create_publisher(raw_data)
-      name = raw_data["name"]
-      publisher = Publisher.create(:name => name)
-      return publisher
-    end
-
-    def create_reference_link(raw_data)
-      publisher = create_publisher(raw_data)
-      rl = ReferenceLink.create(:url => raw_data["url"], :publisher => publisher)
-
-      return rl
-    end
 
     def create_drone_attack(attackData)
       droneAttack = DroneAttack.new
 
       droneAttack.incident_year= attackData["incident_year"]
-      droneAttack.location= attackData["location"]
 
-      province = droneAttack.province= attackData["province"]
-      city = droneAttack.city= attackData["city"]
-      geoLocation = province.to_s + " " + city.to_s
-
-      coordinates = MultiGeocoder.geocode(geoLocation)
-      droneAttack.latitude= coordinates.lat
-      droneAttack.longitude= coordinates.lng
-
+      province =  update_name(attackData["province"].downcase)
+      city = update_name(attackData["city"].downcase)
+      information = attackData["location"]
+      reference_location = Location.where(:city => city, :province => province).first
+      if reference_location.nil?
+        location = create_location(city, province, information)
+        droneAttack.location= location
+      else
+        droneAttack.location= reference_location
+      end
       droneAttack.al_qaida_min= attackData["al_qaida_min"]
       droneAttack.al_qaida_max= attackData["al_qaida_max"]
       droneAttack.taliban_min= attackData["taliban_min"]
@@ -103,9 +46,38 @@ module DroneAttacksHelper
           droneAttack.reference_links << ref_link
         end
       end
-      droneAttack.xcoordinate= Random.rand(0...500)
-      droneAttack.ycoordinate= Random.rand(0...500)
+
       return droneAttack
+    end
+
+    def create_publisher(raw_data)
+      name = raw_data["name"]
+      name_in_db = Publisher.where(:name => name ).first
+      if name_in_db.nil?
+        publisher = Publisher.create(:name => name)
+      else
+        publisher = name_in_db
+      end
+      return publisher
+    end
+
+    def create_reference_link(raw_data)
+      publisher = create_publisher(raw_data)
+      rl = ReferenceLink.create(:url => raw_data["url"], :publisher => publisher)
+
+      return rl
+    end
+
+    def create_location(city, province, information)
+      xcoordinate = Random.rand(0...500)
+      ycoordinate = Random.rand(0...500)
+      location = Location.create(:city => city, :province => province, :xcoordinate => xcoordinate, :ycoordinate => ycoordinate, :information => information)
+      return location
+    end
+
+    def update_name(name)
+      name.downcase
+      name.gsub(" ", "_")
     end
   end
 end

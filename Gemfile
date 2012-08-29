@@ -13,6 +13,7 @@ gem 'whenever', :require => false
 gem 'haml'
 gem 'jquery-rails'
 gem 'rabl'
+gem 'bcrypt-ruby', '3.0.1'
 
 
 # Bundle edge Rails instead:
@@ -39,6 +40,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :test do
+  gem 'capybara', '1.1.2'
+  gem 'factory_girl_rails', '1.4.0'
 end
 
 

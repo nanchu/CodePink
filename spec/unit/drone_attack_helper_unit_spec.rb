@@ -25,7 +25,7 @@ describe "Drone Attack Helper" do
   end
 
   it "create_drone_attack should create drone attack" do
-    drone_attack = @droneAttackHelper.create_drone_attack(@attackData)
+    drone_attack = @droneAttackHelper.create_drone_attack_from_json(@attackData)
     drone_attack.incident_year.should == 2005
     drone_attack.location.information.should == "Mir Ali (Near Afghan Border)"
     drone_attack.location.province.should == "fata"

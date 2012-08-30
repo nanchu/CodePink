@@ -25,7 +25,7 @@
     </div>
     <div>
       <%= f.label :location_group %><br />
-      <%= f.collection_select(:location_group_id, LocationGroup.all, :id, :name) %>      <%= link_to 'Create New location_group', new_location_group_path %><br/>
+      <%= f.collection_select(:location_group_id, LocationGroup.all, :id, :name) %>
 
     </div>
     <div class="actions">

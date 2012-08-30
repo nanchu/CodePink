@@ -27,7 +27,7 @@ module BundleDataPuller
       if row.nil?
         return
       end
-      drone = @droneAttackHelper.create_drone_attack(row)
+      drone = @droneAttackHelper.create_drone_attack_from_json(row)
       drone.save
       i += 1
     end
@@ -43,7 +43,7 @@ module BundleDataPuller
       if attackData.nil?
         return
       end
-      droneAttack = @droneAttackHelper.create_drone_attack(attackData)
+      droneAttack = @droneAttackHelper.create_drone_attack_from_json(attackData)
       droneAttack.save
       i +=1
     end

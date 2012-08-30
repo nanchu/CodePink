@@ -47,9 +47,8 @@ describe "Drone Attack Helper" do
     drone_attack.reference_links[0].url.should  == "http://www.msnbc.msn.com/id/7847008/"
     drone_attack.incident_date.should == 1115492400
     drone_attack.display_date.strftime("%m/%d/%Y").should == "05\/08\/2005"
-    #drone_attack.longitude.should == 69.8597406
-    #drone_attack.latitude.should == 32.3202371
-    drone_attack.location.xcoordinate.should_not be_nil
-    drone_attack.location.ycoordinate.should_not be_nil
+    puts drone_attack.location
+    drone_attack.location.location_group.xcoordinate.should_not be_nil
+    drone_attack.location.location_group.ycoordinate.should_not be_nil
   end
 end

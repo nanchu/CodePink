@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+location_groups = LocationGroup.create([{:name => 'Group1', :xcoordinate => 50, :ycoordinate => 50}])

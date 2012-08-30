@@ -69,9 +69,11 @@ module DroneAttacksHelper
     end
 
     def create_location(city, province, information)
-      xcoordinate = Random.rand(0...500)
-      ycoordinate = Random.rand(0...500)
-      location = Location.create(:city => city, :province => province, :xcoordinate => xcoordinate, :ycoordinate => ycoordinate, :information => information)
+      location_group = LocationGroup.first
+      if location_group.nil?
+        location_group = LocationGroup.create(:name => "GroupA", :xcoordinate => 40, :ycoordinate => 40)
+      end
+      location = Location.create(:city => city, :province => province, :location_group => location_group, :information => information)
       return location
     end
 

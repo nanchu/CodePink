@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829160302) do
+ActiveRecord::Schema.define(:version => 20120829224131) do
 
   create_table "drone_attacks", :force => true do |t|
     t.integer  "incident_year"
@@ -35,14 +35,21 @@ ActiveRecord::Schema.define(:version => 20120829160302) do
     t.integer  "location_id"
   end
 
-  create_table "locations", :force => true do |t|
-    t.string   "city"
-    t.string   "province"
-    t.string   "information"
+  create_table "location_groups", :force => true do |t|
+    t.string   "name"
     t.integer  "xcoordinate"
     t.integer  "ycoordinate"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "city"
+    t.string   "province"
+    t.string   "information"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "location_group_id"
   end
 
   create_table "maps", :force => true do |t|

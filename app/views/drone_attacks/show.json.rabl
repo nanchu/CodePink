@@ -3,7 +3,7 @@ attributes :al_qaida_max, :al_qaida_min, :civilians_max, :civilians_min, :displa
 
 glue :location do
   glue :location_group do
-    attributes :xcoordinate => :xcoordinate, :ycoordinate => :ycoordinate
+    attributes :name => :location_group, :xcoordinate => :xcoordinate, :ycoordinate => :ycoordinate
   end
   attributes :city => :city, :province => :province
 end

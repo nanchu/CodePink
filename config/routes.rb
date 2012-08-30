@@ -1,5 +1,7 @@
 Codepink::Application.routes.draw do
 
+  resources :location_groups
+
   resources :locations
   resources :users
   resources :publishers

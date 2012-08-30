@@ -9,15 +9,14 @@ module DroneAttacksHelper
 
 
 
-    def create_drone_attack(attackData)
+    def create_drone_attack_from_json(attackData)
       droneAttack = DroneAttack.new
-
-      droneAttack.incident_year= attackData["incident_year"]
 
       province =  update_name(attackData["province"].downcase)
       city = update_name(attackData["city"].downcase)
       information = attackData["location"]
-      reference_location = Location.where(:city => city, :province => province).first
+
+      reference_location = Location.where(:city => city, :province => province, :information => information).first
       if reference_location.nil?
         location = create_location(city, province, information)
         droneAttack.location= location
@@ -37,6 +36,7 @@ module DroneAttacksHelper
       droneAttack.injured_min= attackData["injured_min"]
       droneAttack.injured_max= attackData["injured_max"]
       droneAttack.women= attackData["women"]
+      droneAttack.incident_year= attackData["incident_year"]
       droneAttack.incident_date= attackData["incident_date"].to_i
       droneAttack.display_date= attackData["display_date"]
       references = attackData["refrences"]
@@ -69,9 +69,21 @@ module DroneAttacksHelper
     end
 
     def create_location(city, province, information)
-      xcoordinate = Random.rand(0...500)
-      ycoordinate = Random.rand(0...500)
-      location = Location.create(:city => city, :province => province, :xcoordinate => xcoordinate, :ycoordinate => ycoordinate, :information => information)
+      location = Location.where(:city => city, :province => province, :information => information ).first
+      location_close = Location.where(:city => city, :province => province)
+      if !location.nil?
+        location_group = location.location_group
+      elsif location.nil? & !location_close.nil?
+        location_group = LocationGroup.create(:name => city + "-" + province + location_close.count.to_s,
+                                              :xcoordinate => Random.rand(1...700), :ycoordinate => Random.rand(1...250))
+      elsif location.nil? & location_close.nil?
+        location_group = LocationGroup.create(:name => city + "-" + province,
+                                              :xcoordinate => Random.rand(1...700), :ycoordinate => Random.rand(200...500))
+      else
+        location_group = LocationGroup.create(:name => city + "-" + province + "?",
+                                              :xcoordinate => Random.rand(1...700), :ycoordinate => Random.rand(500...800))
+      end
+      location = Location.create(:city => city, :province => province, :location_group => location_group, :information => information)
       return location
     end
 

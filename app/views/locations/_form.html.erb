@@ -23,15 +23,11 @@
       <%= f.label :information %><br />
       <%= f.text_field :information %>
     </div>
-    <div class="field">
-      <%= f.label :xcoordinate %><br />
-      <%= f.text_field :xcoordinate %>
-    </div>
-    <div class="field">
-      <%= f.label :ycoordinate %><br />
-      <%= f.text_field :ycoordinate %>
-    </div>
+    <div>
+      <%= f.label :location_group %><br />
+      <%= f.collection_select(:location_group_id, LocationGroup.all, :id, :name) %>
 
+    </div>
     <div class="actions">
       <%= f.submit %>
     </div>

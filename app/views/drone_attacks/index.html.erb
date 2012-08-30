@@ -8,7 +8,8 @@
     <th>Id</th>
     <th>City</th>
     <th>Province</th>
-    <th>Location</th>
+    <th>LocationInfo</th>
+    <th>LocationGroup</th>
     <th>X-Coordinate</th>
     <th>Y-Coordinate</th>
     <th></th>
@@ -20,9 +21,10 @@
         <td><%= drone_attack.location.city %></td>
         <td><%= drone_attack.location.province %></td>
         <td><%= drone_attack.location.information %></td>
-        <td><%= drone_attack.location.xcoordinate %></td>
-        <td><%= drone_attack.location.ycoordinate %></td>
-        <td><%= link_to 'Edit Location', edit_drone_attack_path(drone_attack) %></td>
+        <td><%= drone_attack.location.location_group.name %></td>
+        <td><%= drone_attack.location.location_group.xcoordinate %></td>
+        <td><%= drone_attack.location.location_group.ycoordinate %></td>
+        <td><%= link_to 'Edit Location', edit_location_path(drone_attack.location) %></td>
         <td><%= link_to 'Delete', drone_attack, confirm: 'Are you sure?', method: :delete %></td>
       </tr>
   <% end %>

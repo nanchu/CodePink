@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "Creating New Location" do
 
+  before { LocationGroup.create(name: "ExampleLocationGroup", xcoordinate: 400, ycoordinate: 400)}
+
   it"should be able to create new location via 'locations/new'" do
     visit '/locations/new'
 
@@ -10,8 +12,6 @@ describe "Creating New Location" do
     fill_in "City", with: "ExampleCity"
     fill_in "Province", with: "ExampleProvince"
     fill_in "Information", with: "ExampleInformation"
-    fill_in "Xcoordinate", with: "400"
-    fill_in "Ycoordinate", with: "400"
 
     click_button "Create Location"
 
@@ -24,8 +24,8 @@ describe "Creating New Location" do
     location.city.should == "ExampleCity"
     location.province.should == "ExampleProvince"
     location.information.should == "ExampleInformation"
-    location.xcoordinate.should == 400
-    location.ycoordinate.should == 400
+    location.location_group.xcoordinate.should == 400
+    location.location_group.ycoordinate.should == 400
 
   end
 end

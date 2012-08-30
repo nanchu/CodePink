@@ -29,9 +29,9 @@ class DroneAttacksController < ApplicationController
     @drone_attack = DroneAttack.new
     @drone_attack.reference_links.build
 
-    respond_to do |format|
-      format.html
-    end
+    #respond_to do |format|
+    #  format.html
+    #end
   end
 
   # GET /drone_attacks/1/edit

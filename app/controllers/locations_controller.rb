@@ -1,5 +1,6 @@
 
 class LocationsController < ApplicationController
+  before_filter :signed_in_user, only: [:edit, :update, :create, :destroy]
   # GET /locations
   # GET /locations.json
   def index

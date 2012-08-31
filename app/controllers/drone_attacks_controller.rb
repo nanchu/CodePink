@@ -1,6 +1,7 @@
 
 class DroneAttacksController < ApplicationController
-  #respond_to :json { render :layout => 'blank'}
+  before_filter :signed_in_user, only: [:edit, :update, :create, :destroy]
+
   # GET /drone_attacks
   # GET /drone_attacks.json
   def index

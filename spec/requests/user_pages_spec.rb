@@ -18,6 +18,10 @@ describe "User pages" do
   end
 
   describe "signup" do
+    let(:user) { FactoryGirl.create(:user)}
+    before do
+      sign_in user
+    end
 
     before { visit signup_path }
 

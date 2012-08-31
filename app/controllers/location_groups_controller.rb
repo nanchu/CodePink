@@ -1,5 +1,7 @@
 
 class LocationGroupsController < ApplicationController
+  before_filter :signed_in_user, only: [:edit, :update, :create, :destroy]
+
   # GET /location_groups
   # GET /location_groups.json
   def index

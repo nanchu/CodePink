@@ -11,7 +11,7 @@ Codepink::Application.routes.draw do
 
   match "/tests" => "tests#index"
   match "/signup"  => "users#new"
-  match "/signin" => "sessions#new"
+  match "/admin" => "sessions#new"
   match "/signout" => "sessions#destroy", via: :delete
 
 end

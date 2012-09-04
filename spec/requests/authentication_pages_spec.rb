@@ -5,7 +5,7 @@ describe "Authentication" do
   subject { page }
 
   describe "signin page" do
-    before { visit signin_path}
+    before { visit admin_path}
 
     describe "with invalid info" do
       before { click_button "Sign in"}
@@ -45,17 +45,17 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put location_path(location) }
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "deleting a location" do
           before { delete location_path(location)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "creating new location" do
           before { post locations_path(location)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
       end
 
@@ -69,17 +69,17 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put drone_attack_path(drone_attack) }
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "deleting a drone_attack" do
           before { delete drone_attack_path(drone_attack)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "creating new drone_attack" do
           before { post drone_attacks_path(drone_attack)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
       end
 
@@ -93,17 +93,17 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put location_group_path(location_group) }
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "deleting a location_group" do
           before { delete location_group_path(location_group)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "creating new location_group" do
           before { post location_groups_path(location_group)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
       end
 
@@ -117,17 +117,17 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put publisher_path(publisher) }
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "deleting a publisher" do
           before { delete publisher_path(publisher)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "creating new publisher" do
           before { post publishers_path(publisher)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
       end
 
@@ -141,17 +141,17 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put publisher_path(publisher) }
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "deleting a publisher" do
           before { delete publisher_path(publisher)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "creating new publisher" do
           before { post publishers_path(publisher)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
       end
 
@@ -165,17 +165,17 @@ describe "Authentication" do
 
         describe "submitting to the update action" do
           before { put user_path(user) }
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "deleting a user" do
           before { delete user_path(user)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
 
         describe "creating new user" do
           before { post users_path(user)}
-          specify { response.should redirect_to(signin_path)}
+          specify { response.should redirect_to(admin_path)}
         end
       end
     end

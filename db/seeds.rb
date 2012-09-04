@@ -7,3 +7,4 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 location_groups = LocationGroup.create([{:name => 'Group1', :xcoordinate => 50, :ycoordinate => 50}])
+user = User.create(:name => 'Admin', :email => 'admin@codepink.com', :password => 'password', :password_confirmation => 'password')

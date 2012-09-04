@@ -18,9 +18,10 @@ module BundleDataPuller
     initData = pull_data(getUrl(1,0,1))
     number_attacks = initData["totalCount"]
     numberDrones = DroneAttack.count
+    puts numberDrones
     data = pull_data(getUrl(pageNumber=1, start=numberDrones, limit=number_attacks))
 
-    i = 0
+    i = numberDrones
 
     while i < number_attacks.to_i
       row = data["data"][i]

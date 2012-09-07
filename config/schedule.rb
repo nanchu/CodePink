@@ -1,9 +1,5 @@
-set :output, "log/this.txt"
-
-#every 10.second do
-#   command "/usr/bin/some_great_command"
-#   runner "DroneAttackHelper.DataHelper.refreshdb"
-#   rake "some:great:rake:task"
-#end
+every 20.minutes do
+   rake "updatedb"
+end
 
 

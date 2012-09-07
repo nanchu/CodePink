@@ -1,3 +1,4 @@
+<%= render 'layouts/header' %>
 <h1>Listing Locations</h1>
 
 <table>
@@ -5,6 +6,7 @@
     <th>City</th>
     <th>Province</th>
     <th>Information</th>
+    <th>Location Group</th>
     <th>X-Coordinate</th>
     <th>Y-Coordinate</th>
     <th></th>
@@ -17,9 +19,9 @@
         <td><%= location.city %></td>
         <td><%= location.province %></td>
         <td><%= location.information %></td>
-        <td><%= location.xcoordinate %></td>
-        <td><%= location.ycoordinate %></td>
-        <td><%= link_to 'Show', location %></td>
+        <td><%= location.location_group.name %></td>
+        <td><%= location.location_group.xcoordinate %></td>
+        <td><%= location.location_group.ycoordinate %></td>
         <td><%= link_to 'Edit', edit_location_path(location) %></td>
         <td><%= link_to 'Destroy', location, confirm: 'Are you sure?', method: :delete %></td>
       </tr>

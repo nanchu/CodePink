@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user, only: [:edit, :update, :create, :destroy]
+
+  # GET /users
+  # GET /users.json
+  def index
+    @users = User.all
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

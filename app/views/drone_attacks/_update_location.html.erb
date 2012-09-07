@@ -11,12 +11,22 @@
         </div>
     <% end %>
 
-    <h3>Drone Attack ID: <%= @drone_attack.id %></h3>
+    <h3>ID: <%= @drone_attack.id %></h3>
+    <h3>City: <%= @drone_attack.location.city %></h3>
+    <h3>Province: <%= @drone_attack.location.province %></h3>
+    <h3>Information: <%= @drone_attack.location.information %></h3>
 
     <div class="field">
       <%= f.label :location %><br />
       <%= f.collection_select(:location_id, Location.all, :id, :city) %>
     </div>
+    <%= f.fields_for :location do |builder|  %>
+        <p>
+          <%= builder.label :location_group, "Location Group" %><br/>
+          <%= builder.collection_select(:location_group_id, LocationGroup.all, :id, :name) %>
+        </p>
+
+    <% end %>
     <div class="actions">
       <%= f.submit %>
     </div>

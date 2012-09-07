@@ -1,4 +1,15 @@
 <%= form_for(@drone_attack) do |f| %>
+    <%= f.fields_for :location do |builder|  %>
+        <p>
+          <%= builder.label :city %><br />
+          <%= builder.text_field :city %>
+        </p>
+
+        <p>
+          <%= builder.label :location_group, "Location Group" %><br/>
+          <%= builder.collection_select(:location_group_id, LocationGroup.all, :id, :name) %>
+        </p>
+    <% end %>
     <p>
       <%= f.label :incident_year %><br />
       <%= f.text_field :incident_year %>

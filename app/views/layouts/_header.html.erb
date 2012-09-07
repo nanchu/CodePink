@@ -1,0 +1,13 @@
+<header>
+  <div align="right">
+    <div>
+      <%= link_to "Map", root_path %>
+      <%= link_to "Home", root_path %>
+          <% if signed_in? %>
+                    <%= link_to "Sign out", signout_path, method: "delete" %>
+          <% else %>
+              <%= link_to "Sign in", admin_path %>
+          <% end %>
+    </div>
+  </div>
+</header>
